@@ -1,6 +1,6 @@
 # forestools
 
-**forestools** is a Python package that was created to provide a variety of tools and algorithms for processing and analyzing Remote Sensing for Earth Observations, especially for monitoring forest disturbance. **The PVts-$\beta$ approach**, a non-seasonal detection approach, is implemented in this package and is capable of reading matrix and raster data.
+**Forestools** is a Python package that was created to provide tools for monitoring and mapping vegetation cover, especially detecting deforestation. The **PVts-$$\beta$$** approach, a non-seasonal detection approach (time-series-based), is implemented in this package. 
 
 # Funding
 
