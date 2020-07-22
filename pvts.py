@@ -12,7 +12,7 @@ def pvts(x, startm, endm, threshold = 5):
     
     Parameters:
     
-        x: Can be np.ndarray with 1d or 2d without NaN's
+        x: Can be numpy.ndarray with 1d or 2d without NaN's or pandas.core.series.Series.
     
         startm: The start of the monitoring time.
         
@@ -33,7 +33,6 @@ def pvts(x, startm, endm, threshold = 5):
         
         if x.ndim == 1:
             
-            startm = df_lookup.index.get_loc(dt_obj)
             mean_pvts = np.mean(x[0:(startm-1)])
             std_pvts = np.std(x[0:(startm-1)])
             li = mean_pvts - threshold*std_pvts
@@ -44,10 +43,13 @@ def pvts(x, startm, endm, threshold = 5):
         
     elif isinstance (x, (pd.core.series.Series)):
         
-        mean_pvts = np.mean(x[0:(startm-1)])
-        std_pvts = np.std(x[0:(startm-1)])
+        startm_n = x.index.get_loc(startm)+1
+        endm_n = x.index.get_loc(endm)+1
+        
+        mean_pvts = np.mean(x[0:(startm_n-1)])
+        std_pvts = np.std(x[0:(startm_n-1)])
         li = mean_pvts - threshold*std_pvts
-        value = x[endm-1]
+        value = x[endm_n-1]
         
     else:
         raise NotImplemented('Type of "x" is not implemented.')
