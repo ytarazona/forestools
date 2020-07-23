@@ -4,6 +4,9 @@
 # In[ ]:
 
 
+import numpy
+import pandas
+
 def pvts(x, startm, endm, threshold = 5):
     '''
     This algorithm will allow to detect disturbances in the forests using
@@ -22,32 +25,32 @@ def pvts(x, startm, endm, threshold = 5):
               as NDVI and EVI the threshold is 3, and for fraction indices (NDFI) the thresholds are 
               between 5 and 11.
     Return:
-        Detections.
+        Detections as a dictionary.
     
     '''
     
-    if any(np.isnan(x)):
+    if any(numpy.isnan(x)):
         raise Exception('The object cannot contain NaN: {}'.format(x))
         
-    if isinstance (x, (np.ndarray)):
+    if isinstance (x, (numpy.ndarray)):
         
         if x.ndim == 1:
             
-            mean_pvts = np.mean(x[0:(startm-1)])
-            std_pvts = np.std(x[0:(startm-1)])
+            mean_pvts = numpy.mean(x[0:(startm-1)])
+            std_pvts = numpy.std(x[0:(startm-1)])
             li = mean_pvts - threshold*std_pvts
             value = x[endm-1]
             
         else:
             raise Exception('2d ndarray not supported')
         
-    elif isinstance (x, (pd.core.series.Series)):
+    elif isinstance (x, (pandas.core.series.Series)):
         
         startm_n = x.index.get_loc(startm)+1
         endm_n = x.index.get_loc(endm)+1
         
-        mean_pvts = np.mean(x[0:(startm_n-1)])
-        std_pvts = np.std(x[0:(startm_n-1)])
+        mean_pvts = numpy.mean(x[0:(startm_n-1)])
+        std_pvts = numpy.std(x[0:(startm_n-1)])
         li = mean_pvts - threshold*std_pvts
         value = x[endm_n-1]
         
