@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="forestools-ytarazona",
+    name="forestools",
     version="0.0.6",
     author="Yonatan Tarazona Coronel",
     author_email="geoyons@gmail.com",
