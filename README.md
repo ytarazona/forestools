@@ -48,11 +48,3 @@ Or you can create a conda Python environment to install **forestools**:
     conda create -n forest_env python=3.7
     conda activate forest_env
     conda install forestools
-
-
-
-
-
-
-
-
