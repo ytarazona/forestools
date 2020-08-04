@@ -55,23 +55,24 @@ Or you can create a conda Python environment to install **forestools**:
 
 Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bandas: 'B2', 'B3', 'B4','B5','B6','B7'. 
 
-    import forestools
+```{python}
+import forestools
     
-    # Read raster bands
+# Read raster bands
+imgRas = rasterio.open('tests/data/LC08_232066_20190727.jp2')
     
-    imgRas = rasterio.open('tests/data/LC08_232066_20190727.jp2')
+# Raster to Numpay arrays
+image = imgRes.read()
     
-    # Raster to Numpay arrays
-    
-    image = imgRes.read()
-    
-    # Obtaining NDFI from Surface Reflectance
-    
-    ndfi = forestools.ndfiSMA(x = image, procesLevel = 'SR')
+# Obtaining NDFI from Surface Reflectance
+ndfi = forestools.ndfiSMA(x = image, procesLevel = 'SR')
 
-    # Displaying the index
+# Displaying the index
+plt.figure(figsize=(9,9))
+plt.imshow(ndfi, cmap='RdYlGn')
+plt.title('NDFI - Landsat 8 OLI')
+```
 
-    plt.figure(figsize=(9,9))
-    plt.imshow(ndfi, cmap='RdYlGn')
-    plt.title('NDFI - Landsat 8 OLI')
+
     
+
