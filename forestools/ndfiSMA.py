@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[30]:
 
 
 import numpy
@@ -16,7 +16,7 @@ def ndfiSMA(x, procesLevel = 'SR'):
     Parameters:
     
         x: Can be numpy.ndarray with 2d without NaN's. Array dimensions should be rows, columns 
-           and number of bands.
+           and number of bands. The image must be in surface reflectance or TOA but scaled from 0 to 10000.
         
         procesLevel: procesLevel Processing level. It is possible to obtain the NDFI from images in 
                      surface reflectance (SR) from TM, ETM+ and OLI, or Top of Atmosphere (TOA) 
@@ -27,10 +27,16 @@ def ndfiSMA(x, procesLevel = 'SR'):
         numpy.ndarray with 2d.
     '''
     if isinstance (x, (numpy.ndarray)):
-        row = x.shape[0]
-        col = x.shape[1]
-        bands = x.shape[2]
-        x = x.reshape((row*col, bands))
+        
+        M_img = numpy.zeros((x.shape[1], x.shape[2], x.shape[0]))
+        
+        for i in range(0, x.shape[0], 1):
+            M_img[:,:,i] = x[i,:,:]
+        
+        row = M_img.shape[0]
+        col = M_img.shape[1]
+        bands = M_img.shape[2]
+        x = M_img.reshape((row*col, bands))
     else:
         raise NotImplemented('"x" must be numpy.ndarray with rows, cols and bands.')
     
@@ -41,7 +47,7 @@ def ndfiSMA(x, procesLevel = 'SR'):
             [1799.0, 2479.0, 3158.0, 5437.0, 7707.0, 6646.0], # soil
             [4031.0, 8714.0, 7900.0, 8989.0, 7002.0, 6607.0], # cloud
            ]
-        M = np.array(M)
+        M = numpy.array(M)
         
     elif  procesLevel == 'TOA':
         
@@ -50,7 +56,7 @@ def ndfiSMA(x, procesLevel = 'SR'):
             [1799.0, 2479.0, 3158.0, 5437.0, 7707.0, 6646.0], # soil
             [4031.0, 8714.0, 7900.0, 8989.0, 7002.0, 6607.0], # cloud
            ]
-        M = np.array(M)
+        M = numpy.array(M)
         
     else:
         raise NotImplemented('Processing level not supported.')
@@ -78,10 +84,10 @@ def ndfiSMA(x, procesLevel = 'SR'):
     else:
         raise NotImplemented('The number of bands must be greater than the number of endmembers.')
     
-    gv = sma_img[:,:,0]; gv[gv<0] = 0 # Green Vegetation
-    npv = sma_img[:,:,1]; npv[npv<0] = 0 # Non Photosynthetic Vegetation
-    soil = sma_img[:,:,2]; soil[soil<0] = 0 # Soil
-    cloud = sma_img[:,:,3]; cloud[cloud<0] = 0 # Cloud
+    gv = sma_img[:,:,0]*100; gv[gv<0] = 0 # Green Vegetation
+    npv = sma_img[:,:,1]*100; npv[npv<0] = 0 # Non Photosynthetic Vegetation
+    soil = sma_img[:,:,2]*100; soil[soil<0] = 0 # Soil
+    cloud = sma_img[:,:,3]*100; cloud[cloud<0] = 0 # Cloud
 
     # gv + npv + soil + cloud
     summed = gv + npv + soil + cloud
