@@ -55,6 +55,16 @@ Or you can create a conda Python environment to install **forestools**:
 
 Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bandas: 'B2', 'B3', 'B4','B5','B6','B7'. 
 
+```python
+from typing import Iterator
+
+def fib(n: int) -> Iterator[int]:
+    a, b = 0, 1
+    while a < n:
+        yield a
+        a, b = b, a + b
+```
+
 ```{python}
 import forestools
     
