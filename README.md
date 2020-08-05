@@ -51,12 +51,14 @@ Or you can create a conda Python environment to install **forestools**:
 
 # Examples
 
-## Obtaining the NDFI index
+## 1. Obtaining NDFI index
 
-Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bandas: 'B2', 'B3', 'B4','B5','B6','B7'. 
+Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bands: ['B2', 'B3', 'B4','B5','B6','B7'].
 
 ```python
 import forestools
+import rasterio
+import matplotlib.pyplot as plt
 
 # Read raster bands
 imgRas = rasterio.open('tests/data/LC08_232066_20190727.jp2')
@@ -72,12 +74,9 @@ plt.figure(figsize=(9,9))
 plt.imshow(ndfi, cmap='RdYlGn')
 plt.title('NDFI - Landsat 8 OLI')
 ```
+The output:
+<img src="https://raw.githubusercontent.com/ytarazona/ForesToolboxRS/master/man/figures/logo.png" align="right" width = 15%/>
 
-```python
-import forestools
-    
-
-```
 
 
     
