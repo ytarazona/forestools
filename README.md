@@ -75,7 +75,7 @@ plt.imshow(ndfi, cmap='RdYlGn')
 plt.title('NDFI - Landsat 8 OLI')
 ```
 The output:
-<img src="https://raw.githubusercontent.com/ytarazona/forestools/master/figures/ndfi.png" align="right" width = 15%/>
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/ndfi.png?raw=true" align="right" width = 15%/>
 
 
 
