@@ -76,7 +76,7 @@ plt.title('NDFI - Landsat 8 OLI')
 ```
 The output:
 
-<img src="https://github.com/ytarazona/forestools/blob/master/figures/ndfi.png?raw=true" align="center" width = 80%/>
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/ndfi.png?raw=true" width = 80%/>
 
 
 
