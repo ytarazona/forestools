@@ -78,7 +78,35 @@ The output:
 
 <img src="https://github.com/ytarazona/forestools/blob/master/figures/ndfi.png?raw=true" width = 80%/>
 
+## 2. Breakpoint in an NDFI series
 
+Here an NDFI series between 2000 and 2019.
+
+```python
+import forestools
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# NDFI series
+serie = np.array([184, 193, 181, 166, 166, 189, 175, 180, 184, 189, 
+                  195, 187, 191, 195, 189, 135, 172, 180, 51, 98])
+              
+# Index between 2000 - 2019
+index = pd.date_range('1999', '2019', freq='A')
+ndfi_serie = pd.Series(serie, index = index)
+
+# Displaying the series
+fig, axes = plt.subplots(figsize = (20,12))
+axes.plot(ndfi_serie, marker='.', ms = 7, linewidth =0.7, color = 'gray', 
+          label='NDFI series')
+axes.set_xlabel('Time')
+axes.set_ylabel('NDFI Value')
+axes.legend(loc="lower left", fontsize=20)
+```
+The output:
+
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.png?raw=true" width = 80%/>
 
     
 
