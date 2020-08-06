@@ -89,8 +89,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # NDFI series
-serie = np.array([184, 193, 181, 166, 166, 189, 175, 180, 184, 189, 
-                  195, 187, 191, 195, 189, 135, 172, 180, 51, 98])
+serie = np.array([184, 193, 181, 185, 166, 189, 175, 180, 184, 189, 
+                  195, 187, 191, 195, 189, 135, 172, 180, 51, 60])
               
 # Index between 2000 - 2019
 index = pd.date_range('1999', '2019', freq='A')
@@ -108,5 +108,33 @@ The output:
 
 <img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.png?raw=true" width = 80%/>
 
-    
+### 2.1 Apply a smoothing
+
+Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package.
+
+```python
+import forestools
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create an array
+ndfi_array = ndfi_serie.to_numpy()
+
+# Apply a smoothing
+ndfi_smooth = smootH(x = ndfi_serie)
+
+# Displaying the series
+# Series without smoothing
+fig, axes = plt.subplots(figsize = (20,12))
+axes.plot(ndfi_serie, marker='.', ms = 7, linewidth =0.7, color = 'silver', 
+          label='NDFI series')
+# Series with smoothing
+axes.plot(ndfi_smooth, marker='.', ms = 7, linewidth =1, color = 'blue', 
+          label='NDFI series - smoothed')
+axes.set_xlabel('Time')
+axes.set_ylabel('NDFI Value')
+axes.legend(loc="lower left", fontsize=20)
+```
+
 
