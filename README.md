@@ -108,7 +108,7 @@ The output:
 
 <img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.png?raw=true" width = 80%/>
 
-### 2.1 Apply a smoothing
+### 2.1 Applying a smoothing
 
 Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package.
 
@@ -136,5 +136,8 @@ axes.set_xlabel('Time')
 axes.set_ylabel('NDFI Value')
 axes.legend(loc="lower left", fontsize=20)
 ```
+The output:
+
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_2.png?raw=true" width = 80%/>
 
 
