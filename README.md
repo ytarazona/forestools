@@ -85,7 +85,6 @@ Here an NDFI series between 2000 and 2019.
 ```python
 import forestools
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 # NDFI series
@@ -114,6 +113,7 @@ Before detecting a breakpoint, it is necessary to apply a smoothing to remove ou
 ```python
 import forestools
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Apply a smoothing
 ndfi_smooth = smootH(x = serie)
@@ -152,6 +152,8 @@ Parameters:
 > **Note**: You can change the detection threshold if you need to. 
 
 ```python
+import forestools
+
 # Create an array
 cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 6)
 
