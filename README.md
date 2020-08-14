@@ -166,6 +166,9 @@ cd
 Let's use again the output of the smootH function (**ndfi_smooth**), but we'll need to convert to time series.
 
 ```python
+import forestools
+import pandas as pd
+
 # Serie between 2000 - 2019
 index =pd.date_range('2000', '2020', freq='A')
 ndfi_serie = pd.Series(ndfi_smooth.ravel(), index=index)
