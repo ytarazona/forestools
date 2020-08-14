@@ -64,13 +64,13 @@ import matplotlib.pyplot as plt
 imgRas = rasterio.open('tests/data/LC08_232066_20190727.jp2')
     
 # Raster to Numpay arrays
-image = imgRes.read()
+image = imgRas.read()
     
 # Obtaining NDFI from Surface Reflectance
 ndfi = forestools.ndfiSMA(x = image, procesLevel = 'SR')
 
 # Displaying the index
-plt.figure(figsize=(9,9))
+plt.figure(figsize=(12,12))
 plt.imshow(ndfi, cmap='RdYlGn')
 plt.title('NDFI - Landsat 8 OLI')
 ```
@@ -93,12 +93,11 @@ serie = np.array([184, 193, 181, 185, 166, 189, 175, 180, 184, 189,
                   195, 187, 191, 195, 189, 135, 172, 180, 51, 60])
               
 # Index between 2000 - 2019
-index = pd.date_range('1999', '2019', freq='A')
-ndfi_serie = pd.Series(serie, index = index)
+time = np.arange('2000', '2020', dtype='datetime64[Y]')
 
 # Displaying the series
 fig, axes = plt.subplots(figsize = (20,12))
-axes.plot(ndfi_serie, marker='.', ms = 7, linewidth =0.7, color = 'gray', 
+axes.plot(time, serie, marker='.', ms = 7, linewidth =0.7, color = 'gray', 
           label='NDFI series')
 axes.set_xlabel('Time')
 axes.set_ylabel('NDFI Value')
@@ -110,27 +109,23 @@ The output:
 
 ### 2.1 Applying a smoothing
 
-Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package.
+Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package. This function accepts 1d array, so that if we are working with time series we will need to convert to array -> **ndfi_serie.to_numpy()**. 
 
 ```python
 import forestools
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Create an array
-ndfi_array = ndfi_serie.to_numpy()
 
 # Apply a smoothing
-ndfi_smooth = smootH(x = ndfi_serie)
+ndfi_smooth = smootH(x = serie)
+time = np.arange('2000', '2020', dtype='datetime64[Y]')
 
 # Displaying the series
 # Series without smoothing
 fig, axes = plt.subplots(figsize = (20,12))
-axes.plot(ndfi_serie, marker='.', ms = 7, linewidth =0.7, color = 'silver', 
+axes.plot(time, serie, marker='.', ms = 7, linewidth =0.7, color = 'silver', 
           label='NDFI series')
 # Series with smoothing
-axes.plot(ndfi_smooth, marker='.', ms = 7, linewidth =1, color = 'blue', 
+axes.plot(time, ndfi_smooth, marker='.', ms = 7, linewidth =1, color = 'blue', 
           label='NDFI series - smoothed')
 axes.set_xlabel('Time')
 axes.set_ylabel('NDFI Value')
@@ -140,4 +135,48 @@ The output:
 
 <img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_2.png?raw=true" width = 80%/>
 
+### 2.2 Detecting a change
+
+Let's detect change in 2018. For this, we will used the **pvts** function. First, *numpy.ndarray* will be used to detect change, and then we will do the same using *pandas.core.series.Series*.
+
+#### 2.2.1 Using *numpy.ndarray* 
+
+Let's use the output of the smootH function (**ndfi_smooth**), but we'll need to convert to 1d array with *ravel()*.
+
+Parameters:
+- **x**: smoothed series preferably to optimize detections.
+- **startm**: monitoring year, index 19 (i.e., year 2018)
+- **endm**: year of final monitoring (i.e., also year 2018)
+- **threshold**: detection threshold (for NDFI series we will use $6$). If you are using PV series, NDVI or EVI series you can use $5$, $3$ or $3$ respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
+
+> **Note**: You can change the detection threshold if you need to. 
+
+```python
+# Create an array
+cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 6)
+
+# The output
+cd
+{'Monitoring_period': {'start': 19, 'end': 19},
+ 'Breakpoint': {'Year_index': 19, 'value': 120},
+ 'Threshold': {'Threshold': 6, 'Lower_limit': 157.4963411841562}}
+```
+#### 2.2.2 Using *pandas.core.series.Series* 
+
+Let's use again the output of the smootH function (**ndfi_smooth**), but we'll need to convert to time series.
+
+```python
+# Serie between 2000 - 2019
+index =pd.date_range('1999', '2019', freq='A')
+ndfi_serie = pd.Series(ndfi_smooth.ravel(), index=index)
+
+# Create an array
+cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 6)
+
+# The output
+cd
+{'Monitoring_period': {'start': 19, 'end': 19},
+ 'Breakpoint': {'Year_index': 19, 'value': 120},
+ 'Threshold': {'Threshold': 6, 'Lower_limit': 157.4963411841562}}
+```
 
