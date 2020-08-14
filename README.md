@@ -175,8 +175,8 @@ cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 6)
 
 # The output
 cd
-{'Monitoring_period': {'start': 19, 'end': 19},
- 'Breakpoint': {'Year_index': 19, 'value': 120},
- 'Threshold': {'Threshold': 6, 'Lower_limit': 157.4963411841562}}
+{'Monitoring_period': {'start': '2018-12-31', 'end': '2018-12-31'},
+ 'Breakpoint': {'Year_index': '2018-12-31', 'value': 60},
+ 'Threshold': {'Threshold': 6, 'Lower_limit': 88.94865212677809}}
 ```
 
