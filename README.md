@@ -167,7 +167,7 @@ Let's use again the output of the smootH function (**ndfi_smooth**), but we'll n
 
 ```python
 # Serie between 2000 - 2019
-index =pd.date_range('1999', '2019', freq='A')
+index =pd.date_range('2000', '2020', freq='A')
 ndfi_serie = pd.Series(ndfi_smooth.ravel(), index=index)
 
 # Create an array
@@ -176,7 +176,7 @@ cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 6)
 # The output
 cd
 {'Monitoring_period': {'start': '2018-12-31', 'end': '2018-12-31'},
- 'Breakpoint': {'Year_index': '2018-12-31', 'value': 60},
- 'Threshold': {'Threshold': 6, 'Lower_limit': 88.94865212677809}}
+ 'Breakpoint': {'Year_index': '2018-12-31', 'value': 120},
+ 'Threshold': {'Threshold': 6, 'Lower_limit': 157.4963411841562}}
 ```
 
