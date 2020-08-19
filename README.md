@@ -37,18 +37,6 @@ It is also possible to install the latest development version directly from the 
     
     pip install git+git://github.com/ytarazona/forestools.git
 
-## 3. Installing with Anaconda/conda
-
-If you have Anaconda or Miniconda installed, you can then do:  
-
-    conda install forestools 
-
-Or you can create a conda Python environment to install **forestools**:
-    
-    conda create -n forest_env python=3.7
-    conda activate forest_env
-    conda install forestools
-
 # Examples
 
 ## 1. Obtaining NDFI index
