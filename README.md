@@ -155,7 +155,7 @@ Parameters:
 import forestools
 
 # Create an array
-cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 6)
+cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 5)
 
 # The output
 cd
@@ -176,7 +176,7 @@ index =pd.date_range('2000', '2020', freq='A')
 ndfi_serie = pd.Series(ndfi_smooth.ravel(), index=index)
 
 # Create an array
-cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 6)
+cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 5)
 
 # The output
 cd
