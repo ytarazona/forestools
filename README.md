@@ -44,7 +44,7 @@ It is also possible to install the latest development version directly from the 
 Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bands: ['B2', 'B3', 'B4','B5','B6','B7'].
 
 ```python
-import forestools
+from forestools import ndfiSMA
 import rasterio
 import matplotlib.pyplot as plt
 
@@ -55,7 +55,7 @@ imgRas = rasterio.open('tests/data/LC08_232066_20190727.jp2')
 image = imgRas.read()
     
 # Obtaining NDFI from Surface Reflectance
-ndfi = forestools.ndfiSMA(x = image, procesLevel = 'SR')
+ndfi = ndfiSMA(x = image, procesLevel = 'SR')
 
 # Displaying the index
 plt.figure(figsize=(12,12))
@@ -71,7 +71,6 @@ The output:
 Here an NDFI series between 2000 and 2019.
 
 ```python
-import forestools
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -99,7 +98,7 @@ The output:
 Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package. This function accepts 1d array, so that if we are working with time series we will need to convert to array -> **ndfi_serie.to_numpy()**. 
 
 ```python
-import forestools
+from forestools import smootH
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -140,7 +139,7 @@ Parameters:
 > **Note**: You can change the detection threshold if you need to. 
 
 ```python
-import forestools
+from forestools import pvts
 
 # Create an array
 cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 5)
@@ -156,7 +155,7 @@ cd
 Let's use again the output of the smootH function (**ndfi_smooth**), but we'll need to convert to time series.
 
 ```python
-import forestools
+from forestools import pvts
 import pandas as pd
 
 # Serie between 2000 - 2019
