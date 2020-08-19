@@ -135,7 +135,7 @@ Parameters:
 - **x**: smoothed series preferably to optimize detections.
 - **startm**: monitoring year, index 19 (i.e., year 2018)
 - **endm**: year of final monitoring (i.e., also year 2018)
-- **threshold**: detection threshold (for NDFI series we will use $6$). If you are using PV series, NDVI or EVI series you can use $5$, $3$ or $3$ respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
+- **threshold**: detection threshold (for NDFI series we will use $$6$$). If you are using PV series, NDVI or EVI series you can use $5$, $3$ or $3$ respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
 
 > **Note**: You can change the detection threshold if you need to. 
 
