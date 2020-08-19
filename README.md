@@ -161,7 +161,7 @@ cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 5)
 cd
 {'Monitoring_period': {'start': 19, 'end': 19},
  'Breakpoint': {'Year_index': 19, 'value': 120},
- 'Threshold': {'Threshold': 6, 'Lower_limit': 157.4963411841562}}
+ 'Threshold': {'Threshold': 5, 'Lower_limit': 157.4963411841562}}
 ```
 #### 2.2.2 Using *pandas.core.series.Series* 
 
@@ -182,6 +182,6 @@ cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 5)
 cd
 {'Monitoring_period': {'start': '2018-12-31', 'end': '2018-12-31'},
  'Breakpoint': {'Year_index': '2018-12-31', 'value': 120},
- 'Threshold': {'Threshold': 6, 'Lower_limit': 157.4963411841562}}
+ 'Threshold': {'Threshold': 5, 'Lower_limit': 157.4963411841562}}
 ```
 
