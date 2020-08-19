@@ -1,0 +1,4 @@
+include LICENSE
+recursive-include figures *.png
+recursive-include tests *.jp2
+recursive-include tests *.npz
