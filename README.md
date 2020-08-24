@@ -27,7 +27,7 @@ To used **forestools** it is necessary to install first. There are three options
 
 ## 1. From PyPI
 
-**forestools** is available on PyPI, so to install it, run this command in your terminal:
+**forestools** is available on [PyPI](https://pypi.org/project/forestools/), so to install it, run this command in your terminal:
 
     pip install forestools
 
