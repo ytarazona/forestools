@@ -88,7 +88,7 @@ plt.title('NDFI - Landsat 8 OLI')
 ```
 The output:
 
-<img src="https://www.apgis-rs.com/images/forestools/ndfi.png" width = 90%/>
+<img src="https://www.apgis-rs.com/images/forestools/ndfi.png" width = 80%/>
 
 ## 2. Breakpoint in an NDFI series
 
