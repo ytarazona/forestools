@@ -115,7 +115,7 @@ axes.legend(loc="lower left", fontsize=20)
 ```
 The output:
 
-<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.png?raw=true" width = 80%/>
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.jpg?raw=true" width = 80%/>
 
 ### 2.1 Applying a smoothing
 
