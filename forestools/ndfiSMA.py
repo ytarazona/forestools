@@ -97,7 +97,7 @@ def ndfiSMA(x, procesLevel = 'SR'):
     npvSoil = npv + soil + cloud
 
     # NDFI
-    ndfi_index = (gvs-npvSoil)/(gvs+npvSoil)*100 + 100
+    ndfi_index = (gvs-npvSoil)/(gvs+npvSoil)
     
     return ndfi_index
 
