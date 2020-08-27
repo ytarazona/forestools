@@ -92,7 +92,7 @@ The output:
 
 ## 2. Breakpoint in an NDFI series
 
-Here an NDFI series between 2000 and 2019.
+Here an NDFI series between 2000 and 2019 and in a range between 0 and 200.
 
 ```python
 import numpy as np
