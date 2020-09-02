@@ -41,7 +41,7 @@ It is also possible to install the latest development version directly from the 
 
 ## 1. Obtaining NDFI index
 
-Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bands: ['B2', 'B3', 'B4','B5','B6','B7'].
+Landsat 8 OLI (Operational Land Imager) was used to obtain the NDFI index in this example. This image contain bands: B2, B3, B4, B5, B6, B7.
 
 ```python
 from forestools import ndfiSMA
@@ -92,26 +92,26 @@ The output:
 
 ## 2. Breakpoint in an NDFI series
 
-Here an NDFI series between 2000 and 2019 and in a range between 0 and 200.
+Here an NDFI series between 2000 and 2019 from -1 to 1.
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
 # NDFI series
-serie = np.array([184, 193, 181, 185, 166, 189, 175, 180, 184, 189, 
-                  195, 187, 191, 195, 189, 135, 172, 180, 51, 60])
+serie = np.array([0.84, 0.93, 0.89, 0.75, 0.87, 0.89, 0.845, 0.8425, 0.70, 0.89, 0.95, 
+                  0.90, 0.94, 0.95, 0.89, 0.805, 0.8025, 0.80, 0.20, -0.40])
               
 # Index between 2000 - 2019
-time = np.arange('2000', '2020', dtype='datetime64[Y]')
+time = np.arange('2000', '2020', dtype = 'datetime64[Y]')
 
 # Displaying the series
 fig, axes = plt.subplots(figsize = (20,12))
-axes.plot(time, serie, marker='.', ms = 7, linewidth =0.7, color = 'gray', 
-          label='NDFI series')
+axes.plot(time, serie, marker = '.', ms = 7, linewidth = 0.7, color = 'gray', 
+          label ='NDFI series')
 axes.set_xlabel('Time')
 axes.set_ylabel('NDFI Value')
-axes.legend(loc="lower left", fontsize=20)
+axes.legend(loc = "lower left", fontsize = 20)
 ```
 The output:
 
@@ -119,7 +119,7 @@ The output:
 
 ### 2.1 Applying a smoothing
 
-Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package. This function accepts 1d array, so that if we are working with time series we will need to convert to array -> **ndfi_serie.to_numpy()**. 
+Before detecting a breakpoint, it is necessary to apply a smoothing to remove outliers. So, we'll use the **smootH** function from the **forestools** package. This function accepts 1d array and 2d array, so that if we are working with time series we will need to convert to array -> **serie.to_numpy()**. 
 
 ```python
 from forestools import smootH
@@ -133,14 +133,14 @@ time = np.arange('2000', '2020', dtype='datetime64[Y]')
 # Displaying the series
 # Series without smoothing
 fig, axes = plt.subplots(figsize = (20,12))
-axes.plot(time, serie, marker='.', ms = 7, linewidth =0.7, color = 'silver', 
+axes.plot(time, serie, marker='.', ms = 7, linewidth = 0.7, color = 'silver', 
           label='NDFI series')
 # Series with smoothing
-axes.plot(time, ndfi_smooth, marker='.', ms = 7, linewidth =1, color = 'blue', 
+axes.plot(time, ndfi_smooth, marker='.', ms = 7, linewidth = 1, color = 'blue', 
           label='NDFI series - smoothed')
 axes.set_xlabel('Time')
 axes.set_ylabel('NDFI Value')
-axes.legend(loc="lower left", fontsize=20)
+axes.legend(loc="lower left", fontsize = 20)
 ```
 The output:
 
@@ -150,49 +150,119 @@ The output:
 
 Let's detect change in 2018. For this, we will used the **pvts** function. First, *numpy.ndarray* will be used to detect change, and then we will do the same using *pandas.core.series.Series*.
 
+**_<div class="alert alert-warning"><font color='darkblue'> Although detecting changes using *numpy.ndarray* is recommended and avoid indexing confusion.</font></div>_**
+
 #### 2.2.1 Using *numpy.ndarray* 
 
-Let's use the output of the smootH function (**ndfi_smooth**), but we'll need to convert to 1d array with *ravel()*.
+Let's use the output of the *smootH* function (**ndfi_smooth**), but we'll need to convert to 1d array with *ravel()*.
 
 Parameters:
 - **x**: smoothed series preferably to optimize detections.
-- **startm**: monitoring year, index 19 (i.e., year 2018)
-- **endm**: year of final monitoring (i.e., also year 2018)
-- **threshold**: detection threshold (for NDFI series we will use 5). If you are using PV series, NDVI or EVI series you can use (5,6), 3 or 3 respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
+- **startm**: monitoring year, index 18 (i.e., year 2018)
+- **endm**: year of final monitoring, index 18 (i.e., also year 2018)
+- **threshold**: detection threshold (for NDFI series we will use $5$). If you are using PV series, NDVI or EVI series you can use $5$, $3$ or $3$ respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
 
 > **Note**: You can change the detection threshold if you need to. 
 
 ```python
 from forestools import pvts
 
-# Create an array
-cd = pvts(x = ndfi_smooth.ravel(), startm = 19, endm = 19, threshold = 5)
+# Let's detect change
+cd = pvts(x = ndfi_smooth.ravel(), startm = 18, endm = 18, threshold = 5)
 
 # The output
 cd
-{'Monitoring_period': {'start': 19, 'end': 19},
- 'Breakpoint': {'Year_index': 19, 'value': 120},
- 'Threshold': {'Threshold': 5, 'Lower_limit': 157.4963411841562}}
+{'Ts': array([ 0.84, 0.93, 0.89, 0.88, 0.885, 0.89, 0.845, 0.8425, 0.86625, 0.89, 0.95,                   0.945, 0.94, 0.95, 0.89, 0.805, 0.8025, 0.80, 0.20, -0.40]),
+ 'Monitoring_period': {'start': 18, 'end': 18},
+ 'Breakpoint': {'Year_index': 18, 'value': 0.2},
+ 'Threshold': {'Threshold': 5, 'Lower_limit': 0.6540094878459528}}
 ```
+
+Then, we can visualize the breakpoint in an graphic using the *plot* function.
+
+```python
+from forestools import plot
+from pylab import rcParams
+rcParams['figure.figsize'] = 15, 7
+
+# Let´s plot the graphic
+plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
+```
+The output:
+
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/Change1.jpg" width = 90%/>
+
+#### Example of Breakpoint not detected
+
+```python
+# Let's detect change
+cd = pvts(x = ndfi_smooth.ravel(), startm = 17, endm = 17, threshold = 5) # No change in 2017
+
+# The output is a dictionary
+cd
+```
+
 #### 2.2.2 Using *pandas.core.series.Series* 
 
 Let's use again the output of the smootH function (**ndfi_smooth**), but we'll need to convert to time series.
+
+Parameters:
+- **x**: smoothed series preferably to optimize detections.
+- **startm**: monitoring year, '2018-12-31' (i.e., year 2018).
+- **endm**: year of final monitoring '2018-12-31' (i.e., also year 2018).
+- **threshold**: for NDFI series we will use $5$.
+
+> **IMPORTANTE NOTE**: Whenever we use *pandas.core.series.Series* to detect change, we must put both *start* and *end* on the last day of the last month of the year. For example, if our monitoring year is 2010, then **`start = '2010-12-31'`** and **`end = '2010-12-31'`**. If our monitoring period is from 2000 to 2010, then **`start = '2000-12-31'`** and **`end = '2010-12-31'`**.
 
 ```python
 from forestools import pvts
 import pandas as pd
 
 # Serie between 2000 - 2019
-index =pd.date_range('2000', '2020', freq='A')
-ndfi_serie = pd.Series(ndfi_smooth.ravel(), index=index)
+index = pd.date_range('2000', '2020', freq ='A')
+ndfi_serie = pd.Series(ndfi_smooth.ravel(), index = index)
 
-# Create an array
-cd = pvts(x = ndfi_serie, startm='2018-12-31', endm='2018-12-31', threshold= 5)
+# Let's detect change
+cd = pvts(x = ndfi_serie, startm = '2018-12-31', endm = '2018-12-31', threshold = 5)
 
 # The output
 cd
-{'Monitoring_period': {'start': '2018-12-31', 'end': '2018-12-31'},
- 'Breakpoint': {'Year_index': '2018-12-31', 'value': 120},
- 'Threshold': {'Threshold': 5, 'Lower_limit': 157.4963411841562}}
+{'Ts': 2000-12-31    0.84000
+ 2001-12-31    0.93000
+ 2002-12-31    0.89000
+ 2003-12-31    0.88000
+ 2004-12-31    0.88500
+ 2005-12-31    0.89000
+ 2006-12-31    0.84500
+ 2007-12-31    0.84250
+ 2008-12-31    0.86625
+ 2009-12-31    0.89000
+ 2010-12-31    0.95000
+ 2011-12-31    0.94500
+ 2012-12-31    0.94000
+ 2013-12-31    0.95000
+ 2014-12-31    0.89000
+ 2015-12-31    0.80500
+ 2016-12-31    0.80250
+ 2017-12-31    0.80000
+ 2018-12-31    0.20000
+ 2019-12-31   -0.40000
+ Freq: A-DEC, dtype: float64,
+ 'Monitoring_period': {'start': '2018-12-31', 'end': '2018-12-31'},
+ 'Breakpoint': {'Year_index': '2018-12-31', 'value': 0.2},
+ 'Threshold': {'Threshold': 5, 'Lower_limit': 0.6540094878459526}}
 ```
 
+Then, we can visualize the breakpoint in an graphic using the *plot* function.
+
+```python
+from forestools import plot
+from pylab import rcParams
+rcParams['figure.figsize'] = 15, 7
+
+# Let´s plot the graphic
+plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
+```
+The output:
+
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/Change2.jpg" width = 90%/>
