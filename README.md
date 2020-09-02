@@ -99,8 +99,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # NDFI series
-serie = np.array([0.84, 0.93, 0.89, 0.75, 0.87, 0.89, 0.845, 0.8425, 0.70, 0.89, 0.95, 
-                  0.90, 0.94, 0.95, 0.89, 0.805, 0.8025, 0.80, 0.20, -0.40])
+serie = np.array([0.84, 0.93, 0.89, 0.75, 0.87, 0.89, 0.845, 0.8425, 0.70, 0.89, 0.95,
+0.90, 0.94, 0.95, 0.89, 0.805, 0.8025, 0.80, 0.20, -0.40])
               
 # Index between 2000 - 2019
 time = np.arange('2000', '2020', dtype = 'datetime64[Y]')
@@ -160,7 +160,7 @@ Parameters:
 - **x**: smoothed series preferably to optimize detections.
 - **startm**: monitoring year, index 18 (i.e., year 2018)
 - **endm**: year of final monitoring, index 18 (i.e., also year 2018)
-- **threshold**: detection threshold (for NDFI series we will use $5$). If you are using PV series, NDVI or EVI series you can use $5$, $3$ or $3$ respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
+- **threshold**: detection threshold (for NDFI series we will use 5). If you are using PV series, NDVI or EVI series you can use 5, 3 or 3 respectively. Please see [Tarazona et al. (2018)](https://www.sciencedirect.com/science/article/abs/pii/S1470160X18305326) for more details.
 
 > **Note**: You can change the detection threshold if you need to. 
 
@@ -172,7 +172,8 @@ cd = pvts(x = ndfi_smooth.ravel(), startm = 18, endm = 18, threshold = 5)
 
 # The output
 cd
-{'Ts': array([ 0.84, 0.93, 0.89, 0.88, 0.885, 0.89, 0.845, 0.8425, 0.86625, 0.89, 0.95,                   0.945, 0.94, 0.95, 0.89, 0.805, 0.8025, 0.80, 0.20, -0.40]),
+{'Ts': array([ 0.84, 0.93, 0.89, 0.88, 0.885, 0.89, 0.845, 0.8425, 0.86625, 0.89, 0.95, 
+0.945, 0.94, 0.95, 0.89, 0.805, 0.8025, 0.80, 0.20, -0.40]),
  'Monitoring_period': {'start': 18, 'end': 18},
  'Breakpoint': {'Year_index': 18, 'value': 0.2},
  'Threshold': {'Threshold': 5, 'Lower_limit': 0.6540094878459528}}
@@ -200,6 +201,10 @@ cd = pvts(x = ndfi_smooth.ravel(), startm = 17, endm = 17, threshold = 5) # No c
 
 # The output is a dictionary
 cd
+{'Ts': array([0.84, 0.93, 0.89, 0.88, 0.885, 0.89, 0.845, 0.8425, 0.86625, 0.89, 0.95, 0.945, 0.94, 0.95, 0.89, 0.805, 0.8025,0.8, 0.2, -0.4]),
+ 'Monitoring_period': {'start': 17, 'end': 17},
+ 'Breakpoint': {'Year_index': nan, 'value': nan},
+ 'Threshold': {'Threshold': 5, 'Lower_limit': 0.6769803673192302}}
 ```
 
 #### 2.2.2 Using *pandas.core.series.Series* 
