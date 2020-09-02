@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[30]:
+# In[ ]:
 
 
 import numpy
@@ -72,9 +72,9 @@ def ndfiSMA(x, procesLevel = 'SR'):
                 for j in numpy.arange(0, row*col, 1):
                     f = numpy.dot(mat_oper, x[j,:])
                     frac[j,i] = f[i,]
-            sma_img = numpy.zeros((row, col, 4)) # filas, columnas y n bandas
+            sma_img = numpy.zeros((row, col, 4)) # rows, colums and bands
             
-            # Realizamos el stack
+            # Image stack
             for i in range(0, 4, 1):
                 sma_img[:,:,i] = frac[:,i].reshape(row, col)
             

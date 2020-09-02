@@ -22,8 +22,7 @@ def pvts(x, startm, endm, threshold = 5):
         endm: The end of the monitoring time.
     
         threshold: The default thresholds are 5 or 6 for photosynthetic vegetation, for indices such 
-              as NDVI and EVI the threshold is 3, and for fraction indices (NDFI) the thresholds are 
-              between 5 and 11.
+              as NDVI and EVI the threshold is 3, and for fraction indices (NDFI) the thresholds is 5.
     Return:
         Detections as a dictionary.
     
@@ -65,7 +64,7 @@ def pvts(x, startm, endm, threshold = 5):
         return output
     else:
         output = {'Monitoring_period': {'start': startm, 'end': endm},
-                  'Breakpoint'       : {'Year_index': np.nan, 'value': np.nan},
+                  'Breakpoint'       : {'Year_index': numpy.nan, 'value': numpy.nan},
                   'Threshold'        : {'Threshold': threshold, 'Lower_limit': li}} 
         return output
 
