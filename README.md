@@ -1,5 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/APROGIS?locale.x=es_XC)
+[![PyPI version](https://badge.fury.io/py/forestools.svg)](https://badge.fury.io/py/forestools)
 
 # forestools
 
@@ -186,7 +187,7 @@ from forestools import plot
 from pylab import rcParams
 rcParams['figure.figsize'] = 15, 7
 
-# Let´s plot the graphic
+# LetÂ´s plot the graphic
 plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
 ```
 The output:
@@ -265,7 +266,7 @@ from forestools import plot
 from pylab import rcParams
 rcParams['figure.figsize'] = 15, 7
 
-# Let´s plot the graphic
+# LetÂ´s plot the graphic
 plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
 ```
 The output:
