@@ -116,7 +116,7 @@ axes.legend(loc = "lower left", fontsize = 20)
 ```
 The output:
 
-<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.jpg?raw=true" width = 90%/>
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_1.jpg" width = 90%/>
 
 ### 2.1 Applying a smoothing
 
@@ -145,7 +145,7 @@ axes.legend(loc="lower left", fontsize = 20)
 ```
 The output:
 
-<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_2.jpg?raw=true" width = 90%/>
+<img src="https://github.com/ytarazona/forestools/blob/master/figures/serieNDFI_2.jpg" width = 90%/>
 
 ### 2.2 Detecting a change
 
