@@ -38,32 +38,34 @@ def pvts(x, startm, endm, threshold = 5):
             mean_pvts = numpy.mean(x[0:(startm-1)])
             std_pvts = numpy.std(x[0:(startm-1)])
             li = mean_pvts - threshold*std_pvts
-            value = x[endm-1]
+            value = x[endm]
             
         else:
             raise Exception('2d ndarray not supported')
         
     elif isinstance (x, (pandas.core.series.Series)):
         
-        startm_n = x.index.get_loc(startm)+1
-        endm_n = x.index.get_loc(endm)+1
+        startm_n = x.index.get_loc(startm)
+        endm_n = x.index.get_loc(endm)
         
         mean_pvts = numpy.mean(x[0:(startm_n-1)])
         std_pvts = numpy.std(x[0:(startm_n-1)])
         li = mean_pvts - threshold*std_pvts
-        value = x[endm_n-1]
+        value = x[endm_n]
         
     else:
         raise NotImplemented('Type of "x" is not implemented.')
     
     if value < li:
         
-        output = {'Monitoring_period': {'start': startm, 'end': endm},
+        output = {'Ts': x,
+                  'Monitoring_period': {'start': startm, 'end': endm},
                   'Breakpoint'       : {'Year_index': endm, 'value': value},
                   'Threshold'        : {'Threshold': threshold, 'Lower_limit': li}} 
         return output
     else:
-        output = {'Monitoring_period': {'start': startm, 'end': endm},
+        output = {'Ts': x,
+                  'Monitoring_period': {'start': startm, 'end': endm},
                   'Breakpoint'       : {'Year_index': numpy.nan, 'value': numpy.nan},
                   'Threshold'        : {'Threshold': threshold, 'Lower_limit': li}} 
         return output
