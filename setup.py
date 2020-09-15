@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="forestools",
-    version="0.1.1",
+    version="0.1.2",
     author="Yonatan Tarazona Coronel",
     author_email="geoyons@gmail.com",
     description="Tools for detecting deforestation and forest degradation",
@@ -20,7 +20,9 @@ setup(
     url="https://github.com/ytarazona/forestools",
     install_requires=[
       'numpy',
-      'pandas'
+      'pandas',
+      'matplotlib',
+      'datetime'
     ],
     packages=find_packages(),
     classifiers=[
