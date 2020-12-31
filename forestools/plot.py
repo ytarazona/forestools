@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 from matplotlib.ticker import MaxNLocator
 import numpy as np
+import pandas
 from datetime import timedelta
 
 def plot(x, title = None, xlabel = None, ylabel = None):
