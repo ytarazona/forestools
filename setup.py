@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="forestools",
-    version="0.1.2",
+    version="0.1.3",
     author="Yonatan Tarazona Coronel",
     author_email="geoyons@gmail.com",
     description="Tools for detecting deforestation and forest degradation",
