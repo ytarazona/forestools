@@ -53,7 +53,7 @@ imgRas = rasterio.open('tests/data/LC08_232066_20190727.jp2')
 image = imgRas.read()
     
 # Obtaining NDFI from Surface Reflectance
-ndfi = ndfiSMA(x = image, procesLevel = 'SR')
+ndfi = ndfiSMA.ndfiSMA(x = image, procesLevel = 'SR')
 
 # Let's define the color palette
 palette = mpl.colors.ListedColormap([
@@ -124,7 +124,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Apply a smoothing
-ndfi_smooth = smootH(x = serie)
+ndfi_smooth = smootH.smootH(x = serie)
 time = np.arange('2000', '2020', dtype='datetime64[Y]')
 
 # Displaying the series
@@ -165,7 +165,7 @@ Parameters:
 from forestools import pvts
 
 # Let's detect change
-cd = pvts(x = ndfi_smooth.ravel(), startm = 18, endm = 18, threshold = 5)
+cd = pvts.pvts(x = ndfi_smooth.ravel(), startm = 18, endm = 18, threshold = 5)
 
 # The output
 cd
@@ -184,7 +184,7 @@ from pylab import rcParams
 rcParams['figure.figsize'] = 15, 7
 
 # Let´s plot the graphic
-plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
+plot.plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
 ```
 The output:
 
@@ -194,7 +194,7 @@ The output:
 
 ```python
 # Let's detect change
-cd = pvts(x = ndfi_smooth.ravel(), startm = 17, endm = 17, threshold = 5) # No change in 2017
+cd = pvts.pvts(x = ndfi_smooth.ravel(), startm = 17, endm = 17, threshold = 5) # No change in 2017
 
 # The output is a dictionary
 cd
@@ -225,7 +225,7 @@ index = pd.date_range('2000', '2020', freq ='A')
 ndfi_serie = pd.Series(ndfi_smooth.ravel(), index = index)
 
 # Let's detect change
-cd = pvts(x = ndfi_serie, startm = '2018-12-31', endm = '2018-12-31', threshold = 5)
+cd = pvts.pvts(x = ndfi_serie, startm = '2018-12-31', endm = '2018-12-31', threshold = 5)
 
 # The output
 cd
@@ -263,7 +263,7 @@ from pylab import rcParams
 rcParams['figure.figsize'] = 15, 7
 
 # Let´s plot the graphic
-plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
+plot.plot(cd, title = 'Non-seasonal detection approach', xlabel = 'Index', ylabel = 'NDFI')
 ```
 The output:
 
