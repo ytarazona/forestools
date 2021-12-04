@@ -5,7 +5,7 @@
 
 import unittest
 
-from forestools import forestools
+from forestools import pvts
 
 class TestForestools(unittest.TestCase):
     """Tests for `forestools` package."""
