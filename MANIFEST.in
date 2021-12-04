@@ -1,4 +1,7 @@
 include LICENSE
-recursive-include figures *.png
-recursive-include tests *.jp2
-recursive-include tests *.npz
+include README.md
+include requirements.txt
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
