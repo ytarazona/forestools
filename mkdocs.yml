@@ -45,4 +45,7 @@ nav:
     - FAQ: faq.md
     - Report Issues: https://github.com/ytarazona/forestools/issues
     - API Reference:
-          - forestools module: forestools.md
+          - pvts module: pvts.md
+          - smootH module: smootH.md
+          - ndfiSMA module: ndfiSMA.md
+          - plot module: plot.md
