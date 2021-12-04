@@ -107,7 +107,7 @@ axes.set(title = 'NDFI - Landsat-8 OLI')
 plt.colorbar(img, fraction = 0.035, pad = 0.05)
 plt.show()
 ```
-<img src="forestools/figures/readme_fig1.png" width = 85%/>
+<img src="forestools/figures/readme_fig1.png" width = 100%/>
 
 
 ## 2. Breakpoint in an NDFI series
