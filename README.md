@@ -135,7 +135,7 @@ axes.set(xlabel = 'Time', ylabel = 'NDFI Value')
 axes.legend(loc = "lower left", fontsize = 20)
 plt.show()
 ```
-<img src="forestools/figures/readme_fig2.png" width = 85%/>
+<img src="forestools/figures/readme_fig2.png" width = 95%/>
 
 
 ### 2.1 Applying a smoothing
@@ -163,7 +163,7 @@ axes.set(xlabel = 'Time', ylabel = 'NDFI Value')
 axes.legend(loc="lower left", fontsize = 20)
 plt.show()
 ```
-<img src="forestools/figures/readme_fig3.png" width = 85%/>
+<img src="forestools/figures/readme_fig3.png" width = 95%/>
 
 
 ### 2.2 Detecting a change
@@ -204,7 +204,7 @@ plt.figure(figsize=(11, 6))
 plot(cd, xlabel = 'Index', ylabel = 'NDFI')
 plt.show()
 ```
-<img src="forestools/figures/readme_fig4.png" width = 85%/>
+<img src="forestools/figures/readme_fig4.png" width = 95%/>
 
 
 If you need to save the image, you can follow these codes.
@@ -237,7 +237,7 @@ plot(cd, xlabel = 'Index', ylabel = 'NDFI')
 plt.show()
 ```
 
-<img src="forestools/figures/readme_fig5.png" width = 85%/>
+<img src="forestools/figures/readme_fig5.png" width = 95%/>
 
 
 #### 2.2.2 Using *pandas.core.series.Series* 
@@ -278,7 +278,7 @@ plot(cd, xlabel = 'Index', ylabel = 'NDFI')
 plt.show()
 ```
 
-<img src="forestools/figures/readme_fig6.png" width = 85%/>
+<img src="forestools/figures/readme_fig6.png" width = 95%/>
 
 
 #### Example of Breakpoint not detected
@@ -300,4 +300,4 @@ plot(cd, xlabel = 'Index', ylabel = 'NDFI')
 plt.show()
 ```
 
-<img src="forestools/figures/readme_fig7.png" width = 85%/>
+<img src="forestools/figures/readme_fig7.png" width = 95%/>
