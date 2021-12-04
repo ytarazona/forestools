@@ -49,3 +49,5 @@ nav:
           - smootH module: smootH.md
           - ndfiSMA module: ndfiSMA.md
           - plot module: plot.md
+          - forestools module: forestool.md
+          - installation module: installation.md
