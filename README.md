@@ -144,7 +144,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Apply a smoothing
-ndfi_smooth = smootH.smootH(x = serie)
+ndfi_smooth = smootH(x = serie)
 time = np.arange('2000', '2020', dtype='datetime64[Y]')
 
 # Displaying the series
@@ -184,7 +184,7 @@ Parameters:
 from forestools.pvts import pvts
 
 # Let's detect change
-cd = pvts.pvts(x = ndfi_smooth.ravel(), startm = 18, endm = 18, threshold = 5)
+cd = pvts(x = ndfi_smooth.ravel(), startm = 18, endm = 18, threshold = 5)
 
 # The output
 cd
@@ -218,7 +218,7 @@ fig.savefig('name.png')
 
 ```python
 # Let's detect change
-cd = pvts.pvts(x = ndfi_smooth.ravel(), startm = 17, endm = 17, threshold = 5) # No change in 2017
+cd = pvts(x = ndfi_smooth.ravel(), startm = 17, endm = 17, threshold = 5) # No change in 2017
 
 # The output is a dictionary
 cd
@@ -257,7 +257,7 @@ index = pd.date_range('2000', '2020', freq ='A')
 ndfi_serie = pd.Series(ndfi_smooth.ravel(), index = index)
 
 # Let's detect change
-cd = pvts.pvts(x = ndfi_serie, startm = '2018-12-31', endm = '2018-12-31', threshold = 5)
+cd = pvts(x = ndfi_serie, startm = '2018-12-31', endm = '2018-12-31', threshold = 5)
 
 # The output
 cd
@@ -280,8 +280,8 @@ plt.show()
 #### Example of Breakpoint not detected
 
 ```python
-# Let's detect change
-cd = pvts.pvts(x = ndfi_serie, startm = '2015-12-31', endm = '2015-12-31', threshold = 5) # No change in 2017
+# Let's detect change - No change in 2017
+cd = pvts(x = ndfi_serie, startm = '2015-12-31', endm = '2015-12-31', threshold = 5) 
 
 # The output is a dictionary
 cd
