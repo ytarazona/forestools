@@ -41,4 +41,13 @@ markdown_extensions:
 nav:
     - Home: index.md
     - Installation: installation.md
-
+    - Usage: usage.md
+    - Contributing: contributing.md
+    - FAQ: faq.md
+    - Report Issues: https://github.com/ytarazona/forestools/issues
+    - API Reference:
+          - pvts module: pvts.md
+          - smootH module: smootH.md
+          - ndfiSMA module: ndfiSMA.md
+          - plot module: plot.md
+          - installation module: installation.md
