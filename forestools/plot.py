@@ -4,7 +4,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import numpy as np
-import pandas
+import pandas as pd
 
 def plot(x, title = None, xlabel = None, ylabel = None, **kwargs):
     
@@ -42,7 +42,7 @@ def plot(x, title = None, xlabel = None, ylabel = None, **kwargs):
         p = x['Monitoring_period']['end']
         cons = 1/3
         
-    elif isinstance(ts, (pandas.core.series.Series)):
+    elif isinstance(ts, (pd.core.series.Series)):
         value = x['Breakpoint']['value']
         pos = x['Monitoring_period']['end']
         post = ts.index.get_loc(pos)
@@ -71,7 +71,7 @@ def plot(x, title = None, xlabel = None, ylabel = None, **kwargs):
     # xlabel
     if xlabel is None:
         xlabel = "Index"
-        if isinstance(x['Ts'], (pandas.core.series.Series)):
+        if isinstance(x['Ts'], (pd.core.series.Series)):
             xlabel = 'Time'
     xlabel = xlabel
         
