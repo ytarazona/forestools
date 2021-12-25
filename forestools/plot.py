@@ -6,7 +6,7 @@ from matplotlib.ticker import MaxNLocator
 import numpy as np
 import pandas as pd
 
-def plot(x, title = None, xlabel = None, ylabel = None, **kwargs):
+def plot(x, title = None, xlabel = None, ylabel = None, ax = None, **kwargs):
     
     '''
     This function is to show a non-seasonal detection aproach.
@@ -21,6 +21,8 @@ def plot(x, title = None, xlabel = None, ylabel = None, **kwargs):
         xlabel: X axis title.
         
         ylabel: Y axis title.
+        
+        ax: current axes
         
         **kwargs: These will be passed to the matplotlib plot, please see full lists at:
                 https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html
@@ -74,8 +76,9 @@ def plot(x, title = None, xlabel = None, ylabel = None, **kwargs):
         if isinstance(x['Ts'], (pd.core.series.Series)):
             xlabel = 'Time'
     xlabel = xlabel
-        
-    fig, ax = plt.subplots()
+    
+    ax = plt.gca()
+    
     ax.plot(leng, ts, color = 'silver', marker = '.', ms = 14, linewidth= 1, 
             markerfacecolor = 'black', **kwargs)
     ax.set_title(title)
