@@ -1,7 +1,42 @@
 site_name: forestools
-site_url: https://ytarazona.github.io/forestools/
+
+site_url: https://ytarazona.github.io/forestools
 
 repo_url: https://github.com/ytarazona/forestools
+
+theme:
+    palette:
+        scheme: preference
+    name: material
+    icon:
+        repo: fontawesome/brands/github
+    features:
+        - navigation.instant
+        - search.highlight
+        # - navigation.expand
+        # - navigation.tabs
+    custom_dir: "docs/overrides"
+
+plugins:
+    - search
+    - mkdocstrings
+    - git-revision-date
+    - mkdocs-jupyter:
+          include_source: True
+          execute: True
+          ignore_h1_titles: True
+          
+markdown_extensions:
+    - attr_list
+    - pymdownx.superfences
+    - pymdownx.highlight:
+          linenums: true
+    - toc:
+          permalink: true
+
+# google_analytics:
+#     - UA-XXXXXXXXX-X
+#     - auto
 
 nav:
     - Home: index.md
@@ -16,4 +51,3 @@ nav:
           - ndfiSMA module: ndfiSMA.md
           - plot module: plot.md
           - installation module: installation.md
-theme: readthedocs
