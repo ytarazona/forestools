@@ -4,18 +4,19 @@ site_url: https://ytarazona.github.io/forestools
 
 repo_url: https://github.com/ytarazona/forestools
 
-theme:
-    palette:
-        scheme: preference
-    name: material
-    icon:
-        repo: fontawesome/brands/github
-    features:
-        - navigation.instant
-        - search.highlight
+#theme:
+    #palette:
+        #scheme: preference
+    #name: material
+    #icon:
+        #repo: fontawesome/brands/github
+    #features:
+        #- navigation.instant
+        #- search.highlight
         # - navigation.expand
         # - navigation.tabs
-    custom_dir: "docs/overrides"
+    #custom_dir: "docs/overrides"
+theme: readthedocs
 
 plugins:
     - search
