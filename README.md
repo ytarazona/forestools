@@ -17,7 +17,7 @@ This repository is part of the paper *Mapping deforestation using fractions indi
 
 Please, to cite the forestools package in publications, use this paper:
 
-Yonatan Tarazona (2021). Mapping deforestation using fractions indices and the PVts-beta approach, IEEE Geoscience and Remote Sensing Letters, DOI: [10.1109/LGRS.2021.3137277]().
+Yonatan Tarazona (2021). Mapping deforestation using fractions indices and the PVts-beta approach, IEEE Geoscience and Remote Sensing Letters, DOI: [10.1109/LGRS.2021.3137277](10.1109/LGRS.2021.3137277).
 
 
 # Introduction
