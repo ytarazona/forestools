@@ -77,7 +77,8 @@ def plot(x, title = None, xlabel = None, ylabel = None, ax = None, **kwargs):
             xlabel = 'Time'
     xlabel = xlabel
     
-    ax = plt.gca()
+    if ax is None:
+        ax = plt.gca()
     
     ax.plot(leng, ts, color = 'silver', marker = '.', ms = 14, linewidth= 1, 
             markerfacecolor = 'black', **kwargs)
