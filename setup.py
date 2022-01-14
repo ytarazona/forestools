@@ -27,7 +27,7 @@ setup(
     author="Yonatan Tarazona",
     author_email='geoyons@gmail.com',
     python_requires='>=3.5',
-    version="0.1.7",
+    version="0.1.8",
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
