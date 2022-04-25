@@ -40,7 +40,7 @@ To used **forestools** it is necessary to install first. There are three options
 
 It is also possible to install the latest development version directly from the GitHub repository with:
     
-    pip install git+git://github.com/ytarazona/forestools.git
+    pip install git+https://github.com/ytarazona/forestools
 
 # Examples
 
