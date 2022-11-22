@@ -2,6 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/licence-MIT-blue)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/APROGIS?locale.x=es_XC)
 [![PyPI version](https://badge.fury.io/py/forestools.svg)](https://badge.fury.io/py/forestools)
+[![Downloads](https://pepy.tech/badge/forestools)](https://pepy.tech/project/forestools)
 
 # forestools
 
