@@ -3,7 +3,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/APROGIS?locale.x=es_XC)
 [![PyPI version](https://badge.fury.io/py/forestools.svg)](https://badge.fury.io/py/forestools)
 [![Downloads](https://pepy.tech/badge/forestools)](https://pepy.tech/project/forestools)
-[![DOI](https://img.shields.io/badge/DOI-10.1109%2FLGRS.2021.3137277-orange)](10.1109/LGRS.2021.3137277)
+[![DOI](https://img.shields.io/badge/DOI-10.1109%2FLGRS.2021.3137277-orange)](https://ieeexplore.ieee.org/document/9656901)
 
 # forestools
 
